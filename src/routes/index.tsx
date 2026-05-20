@@ -32,10 +32,12 @@ export const Route = createFileRoute("/")({
 });
 
 function Index() {
+function Index() {
   return (
     <main className="relative min-h-screen overflow-x-hidden">
       <Hero />
       <ScarcityBar />
+      <SocialProofToast inline />
       <Benefits />
       <SecondaryCTA />
       <Footer />
@@ -43,3 +45,4 @@ function Index() {
     </main>
   );
 }
+

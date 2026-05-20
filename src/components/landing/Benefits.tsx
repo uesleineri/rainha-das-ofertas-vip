@@ -9,7 +9,7 @@ const BENEFITS = [
   {
     icon: ShoppingBag,
     title: "Achadinhos das principais lojas",
-    text: "Produtos úteis, bonitos e desejados da Shopee, Mercado Livre, Amazon e outras, com preços que fazem sentido.",
+    text: "Produtos úteis, bonitos e desejados da Shopee, Mercado Livre, Amazon e outras lojas, com preços que fazem sentido.",
   },
   {
     icon: Zap,
@@ -30,22 +30,28 @@ const BENEFITS = [
 
 export function Benefits() {
   return (
-    <section className="relative z-10 mx-auto w-full max-w-5xl px-5 py-12 sm:py-16">
-      <h2 className="text-center text-2xl font-bold text-foreground sm:text-3xl">
+    <section className="relative z-10 mx-auto w-full max-w-5xl px-5 py-10 sm:py-16">
+      <h2 className="text-center font-display text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">
         Ao entrar, você começa a <span className="text-primary">receber</span>:
       </h2>
 
-      <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-8 grid grid-cols-1 gap-3.5 sm:mt-10 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
         {BENEFITS.map(({ icon: Icon, title, text }) => (
           <div
             key={title}
-            className="group relative overflow-hidden rounded-2xl border border-border bg-secondary/15 p-6 backdrop-blur-sm transition-all duration-300 hover:border-primary/50 hover:bg-secondary/25"
+            className="group relative overflow-hidden rounded-2xl border border-border bg-secondary/15 p-4 backdrop-blur-sm transition-all duration-300 hover:border-primary/50 hover:bg-secondary/25 sm:p-5"
           >
-            <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-primary/15 ring-1 ring-primary/30">
-              <Icon className="h-6 w-6 text-primary" strokeWidth={1.8} />
+            <div className="flex items-center gap-3">
+              <div className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-primary/15 ring-1 ring-primary/30">
+                <Icon className="h-5 w-5 text-primary" strokeWidth={1.9} />
+              </div>
+              <h3 className="text-[15px] font-semibold leading-tight text-primary sm:text-base">
+                {title}
+              </h3>
             </div>
-            <h3 className="text-lg font-semibold text-primary">{title}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{text}</p>
+            <p className="mt-3 text-[13px] leading-relaxed text-muted-foreground sm:text-sm">
+              {text}
+            </p>
           </div>
         ))}
       </div>
