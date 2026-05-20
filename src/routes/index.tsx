@@ -1,26 +1,45 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Hero } from "@/components/landing/Hero";
+import { ScarcityBar } from "@/components/landing/ScarcityBar";
+import { SocialProofToast } from "@/components/landing/SocialProofToast";
+import { Benefits } from "@/components/landing/Benefits";
+import { SecondaryCTA } from "@/components/landing/SecondaryCTA";
+import { Footer } from "@/components/landing/Footer";
 
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      {
+        title:
+          "Rainha das Ofertas — Grupo VIP gratuito de ofertas no WhatsApp",
+      },
+      {
+        name: "description",
+        content:
+          "Entre no grupo VIP gratuito da Rainha das Ofertas e receba cupons reais, achadinhos e ofertas relâmpago da Shopee, Mercado Livre, Amazon e mais — direto no seu WhatsApp.",
+      },
+      { property: "og:title", content: "Rainha das Ofertas — Grupo VIP gratuito no WhatsApp" },
+      {
+        property: "og:description",
+        content:
+          "Cupons reais, achadinhos e ofertas relâmpago direto no seu WhatsApp. Entrada gratuita.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. For sites with multiple pages (About, Services, Contact, etc.),
-// create separate route files (about.tsx, services.tsx, contact.tsx) — don't put all pages in this file.
-function PlaceholderIndex() {
-  return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
-  );
-}
-
 function Index() {
-  return <PlaceholderIndex />;
+  return (
+    <main className="relative min-h-screen overflow-x-hidden">
+      <Hero />
+      <ScarcityBar />
+      <Benefits />
+      <SecondaryCTA />
+      <Footer />
+      <SocialProofToast />
+    </main>
+  );
 }
