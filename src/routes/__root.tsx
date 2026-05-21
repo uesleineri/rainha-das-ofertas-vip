@@ -10,6 +10,19 @@ import {
 
 import appCss from "../styles.css?url";
 
+const META_PIXEL_SCRIPT = [
+  "!function(f,b,e,v,n,t,s)",
+  "{if(f.fbq)return;n=f.fbq=function(){n.callMethod?",
+  "n.callMethod.apply(n,arguments):n.queue.push(arguments)};",
+  "if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';",
+  "n.queue=[];t=b.createElement(e);t.async=!0;",
+  "t.src=v;s=b.getElementsByTagName(e)[0];",
+  "s.parentNode.insertBefore(t,s)}(window, document,'script',",
+  "'https://connect.facebook.net/en_US/fbevents.js');",
+  "fbq('init', '1676389707030553');",
+  "fbq('track', 'PageView');",
+].join("\n");
+
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -88,10 +101,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap",
       },
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
+      { rel: "stylesheet", href: appCss },
     ],
   }),
   shellComponent: RootShell,
@@ -105,22 +115,7 @@ function RootShell({ children }: { children: React.ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              !function(f,b,e,v,n,t,s)
-              {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-              n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-              if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-              n.queue=[];t=b.createElement(e);t.async=!0;
-              t.src=v;s=b.getElementsByTagName(e)[0];
-              s.parentNode.insertBefore(t,s)}(window, document,'script',
-              'https://connect.facebook.net/en_US/fbevents.js');
-              fbq('init', '1676389707030553');
-              fbq('track', 'PageView');
-            `,
-          }}
-        />
+        <script dangerouslySetInnerHTML={{ __html: META_PIXEL_SCRIPT }} />
       </head>
       <body>
         {children}
