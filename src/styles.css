@@ -1,0 +1,130 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --shadow-gold: 0 10px 40px -10px oklch(0.78 0.13 80 / 0.45);
+  --gradient-gold: linear-gradient(135deg, oklch(0.82 0.13 80), oklch(0.72 0.12 70));
+  --animate-pulse-soft: pulse-soft 2.4s ease-in-out infinite;
+  --animate-toast-in: toast-in 0.5s ease-out;
+  --animate-fade-in: fade-in 0.6s ease-out both;
+  --animate-progress: progress-fill 1.6s ease-out forwards;
+
+  @keyframes pulse-soft {
+    0%, 100% { box-shadow: 0 0 0 0 oklch(0.78 0.13 80 / 0.55), 0 10px 40px -10px oklch(0.78 0.13 80 / 0.5); }
+    50% { box-shadow: 0 0 0 14px oklch(0.78 0.13 80 / 0), 0 10px 40px -10px oklch(0.78 0.13 80 / 0.5); }
+  }
+  @keyframes toast-in {
+    0% { opacity: 0; transform: translateY(20px) scale(0.95); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  @keyframes fade-in {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes progress-fill {
+    from { width: 0%; }
+    to { width: var(--progress-target, 78%); }
+  }
+}
+
+:root {
+  --radius: 1rem;
+
+  /* Brand palette — Rainha das Ofertas */
+  /* #000511 — quase preto azulado */
+  --background: oklch(0.13 0.03 260);
+  --foreground: oklch(1 0 0);
+
+  --card: oklch(0.18 0.03 240);
+  --card-foreground: oklch(1 0 0);
+
+  --popover: oklch(0.15 0.03 250);
+  --popover-foreground: oklch(1 0 0);
+
+  /* #eaba68 — dourado */
+  --primary: oklch(0.79 0.12 80);
+  --primary-foreground: oklch(0.13 0.03 260);
+
+  /* #3a5f6f — petróleo */
+  --secondary: oklch(0.45 0.04 220);
+  --secondary-foreground: oklch(1 0 0);
+
+  --muted: oklch(0.22 0.03 240);
+  --muted-foreground: oklch(0.82 0.01 240);
+
+  --accent: oklch(0.79 0.12 80);
+  --accent-foreground: oklch(0.13 0.03 260);
+
+  --destructive: oklch(0.6 0.22 25);
+  --destructive-foreground: oklch(1 0 0);
+
+  --border: oklch(0.79 0.12 80 / 0.22);
+  --input: oklch(0.79 0.12 80 / 0.3);
+  --ring: oklch(0.79 0.12 80);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html, body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -10%, oklch(0.79 0.12 80 / 0.12), transparent 60%),
+      radial-gradient(ellipse 60% 40% at 100% 100%, oklch(0.45 0.04 220 / 0.35), transparent 60%),
+      radial-gradient(circle at 20% 80%, oklch(0.79 0.12 80 / 0.05), transparent 50%);
+    background-attachment: fixed;
+  }
+
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background-image: radial-gradient(oklch(0.79 0.12 80 / 0.06) 1px, transparent 1px);
+    background-size: 28px 28px;
+    z-index: 0;
+  }
+
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+  }
+}
