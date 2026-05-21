@@ -11,6 +11,17 @@ import {
 
 import appCss from "../styles.css?url";
 
+const PIXEL_SCRIPT =
+  "!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?" +
+  "n.callMethod.apply(n,arguments):n.queue.push(arguments)};" +
+  "if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';" +
+  "n.queue=[];t=b.createElement(e);t.async=!0;" +
+  "t.src=v;s=b.getElementsByTagName(e)[0];" +
+  "s.parentNode.insertBefore(t,s)}(window,document,'script'," +
+  "'https://connect.facebook.net/en_US/fbevents.js');" +
+  "fbq('init','1676389707030553');" +
+  "fbq('track','PageView');";
+
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -56,7 +67,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
           >
             Try again
           </button>
-            <a
+          
             href="/"
             className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
           >
@@ -103,6 +114,7 @@ function RootShell({ children }: { children: React.ReactNode }) {
     <html lang="en">
       <head>
         <HeadContent />
+        <script dangerouslySetInnerHTML={{ __html: PIXEL_SCRIPT }} />
       </head>
       <body>
         {children}
@@ -114,29 +126,6 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
-
-  useEffect(() => {
-    const win = window as any;
-    if (win.fbq) return;
-
-    const fbq: any = function () {
-      fbq.callMethod ? fbq.callMethod.apply(fbq, arguments) : fbq.queue.push(arguments);
-    };
-    win.fbq = fbq;
-    win._fbq = fbq;
-    fbq.push = fbq;
-    fbq.loaded = true;
-    fbq.version = "2.0";
-    fbq.queue = [];
-
-    const script = document.createElement("script");
-    script.async = true;
-    script.src = "https://connect.facebook.net/en_US/fbevents.js";
-    document.head.appendChild(script);
-
-    fbq("init", "1676389707030553");
-    fbq("track", "PageView");
-  }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
