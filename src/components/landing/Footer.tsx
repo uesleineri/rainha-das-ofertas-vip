@@ -3,7 +3,8 @@ import { Crown } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="relative z-10 border-t border-border bg-[#00030a] px-5 py-12 sm:py-14">
+    <footer className="relative z-10 bg-[#00030a] px-5 py-12 sm:py-14">
+      <div className="pointer-events-none absolute inset-x-0 -top-16 h-16 bg-gradient-to-b from-transparent to-[#00030a]" aria-hidden="true" />
       <div className="mx-auto max-w-4xl text-center">
         <div className="flex items-center justify-center gap-2">
           <Crown className="h-5 w-5 text-primary" strokeWidth={1.6} />
