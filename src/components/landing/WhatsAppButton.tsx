@@ -13,7 +13,7 @@ export function WhatsAppButton({ children, pulse = false, className = "" }: Prop
       href={WHATSAPP_URL}
       target="_blank"
       rel="noopener noreferrer"
-      className={`group relative inline-flex w-full items-center justify-center gap-2.5 rounded-2xl bg-primary px-5 py-3.5 text-center text-[13.5px] font-bold uppercase leading-tight tracking-[0.04em] text-primary-foreground shadow-[var(--shadow-gold)] transition-all duration-300 hover:scale-[1.02] hover:brightness-110 sm:px-6 sm:py-4 sm:text-[15px] ${
+      className={`group relative inline-flex w-full items-center justify-center gap-2.5 rounded-2xl bg-primary px-5 py-3.5 text-center text-[13.5px] font-bold uppercase leading-tight tracking-[0.04em] text-primary-foreground shadow-[var(--shadow-gold)] transition-all duration-300 hover:scale-[1.02] hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:px-6 sm:py-4 sm:text-[15px] ${
         pulse ? "animate-[pulse-soft_2.4s_ease-in-out_infinite]" : ""
       } ${className}`}
     >

@@ -22,12 +22,21 @@ interface Props {
 export function SocialProofToast({ inline = false }: Props) {
   const [index, setIndex] = useState(0);
   const [visible, setVisible] = useState(false);
+  const [dismissed, setDismissed] = useState(false);
 
   useEffect(() => {
+    const MAX_CYCLES = inline ? 999 : 5;
+    let cycles = 0;
     const show = setTimeout(() => setVisible(true), inline ? 200 : 1500);
     const interval = setInterval(() => {
       setVisible(false);
       setTimeout(() => {
+        cycles += 1;
+        if (cycles >= MAX_CYCLES) {
+          setDismissed(true);
+          clearInterval(interval);
+          return;
+        }
         setIndex((i) => (i + 1) % MESSAGES.length);
         setVisible(true);
       }, 450);
@@ -37,6 +46,23 @@ export function SocialProofToast({ inline = false }: Props) {
       clearInterval(interval);
     };
   }, [inline]);
+
+  // Hide floating toast when footer enters viewport
+  useEffect(() => {
+    if (inline) return;
+    const footer = document.querySelector("footer");
+    if (!footer) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setDismissed(true);
+      },
+      { rootMargin: "0px 0px -10% 0px" },
+    );
+    observer.observe(footer);
+    return () => observer.disconnect();
+  }, [inline]);
+
+  if (dismissed) return null;
 
   const card = (
     <div

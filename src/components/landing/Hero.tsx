@@ -10,12 +10,12 @@ export function Hero() {
         <span>Grupo VIP 100% Gratuito</span>
       </div>
 
-      {/* Logo */}
-      <div className="mt-7 flex items-center justify-center gap-2.5 sm:mt-8">
-        <Crown className="h-6 w-6 text-primary sm:h-8 sm:w-8" strokeWidth={1.6} />
-        <h2 className="font-display text-2xl font-semibold tracking-tight text-primary sm:text-3xl">
+      {/* Logo (visual, não-semântico) */}
+      <div className="mt-7 flex items-center justify-center gap-2.5 sm:mt-8" aria-label="Rainha das Ofertas">
+        <Crown className="h-6 w-6 text-primary sm:h-8 sm:w-8" strokeWidth={1.6} aria-hidden="true" />
+        <p className="font-display text-2xl font-semibold tracking-tight text-primary sm:text-3xl">
           Rainha das Ofertas
-        </h2>
+        </p>
       </div>
 
       {/* Headline */}
