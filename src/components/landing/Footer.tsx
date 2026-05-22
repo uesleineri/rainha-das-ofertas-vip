@@ -19,13 +19,13 @@ export function Footer() {
         <div className="mt-7 flex flex-wrap items-center justify-center gap-x-7 gap-y-3 text-sm">
           <Link
             to="/privacidade"
-            className="text-muted-foreground transition-colors hover:text-primary"
+            className="rounded text-muted-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-[#00030a]"
           >
             Política de Privacidade
           </Link>
           <Link
             to="/termos"
-            className="text-muted-foreground transition-colors hover:text-primary"
+            className="rounded text-muted-foreground transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-[#00030a]"
           >
             Termos de Uso
           </Link>
