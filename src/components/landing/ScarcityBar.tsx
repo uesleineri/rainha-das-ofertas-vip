@@ -1,30 +1,16 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 export function ScarcityBar() {
   const [filled, setFilled] = useState(false);
-  const ref = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
-    if (!ref.current) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          requestAnimationFrame(() => setFilled(true));
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.25 },
-    );
-    observer.observe(ref.current);
-    return () => observer.disconnect();
+    const raf = requestAnimationFrame(() => setFilled(true));
+    return () => cancelAnimationFrame(raf);
   }, []);
 
   return (
     <section className="relative z-10 mx-auto w-full max-w-2xl px-5 py-5 sm:py-8">
-      <div
-        ref={ref}
-        className="rounded-2xl border border-border bg-secondary/20 px-5 py-4 backdrop-blur-sm sm:px-7 sm:py-5"
-      >
+      <div className="rounded-2xl border border-border bg-secondary/20 px-5 py-4 backdrop-blur-sm sm:px-7 sm:py-5">
         <h3 className="text-center text-[15px] font-semibold leading-snug text-foreground sm:text-lg">
           Vagas gratuitas do grupo sendo preenchidas
         </h3>
