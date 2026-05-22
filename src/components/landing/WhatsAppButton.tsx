@@ -1,18 +1,29 @@
+import type { ReactNode } from "react";
 import { WHATSAPP_URL } from "@/lib/constants";
+import { trackLead } from "@/lib/meta-pixel";
 import { WhatsAppIcon } from "./WhatsAppIcon";
 
 interface Props {
-  children: React.ReactNode;
+  children: ReactNode;
   pulse?: boolean;
   className?: string;
+  trackingLabel?: string;
 }
 
-export function WhatsAppButton({ children, pulse = false, className = "" }: Props) {
+export function WhatsAppButton({
+  children,
+  pulse = false,
+  className = "",
+  trackingLabel = "Botão WhatsApp",
+}: Props) {
   return (
     <a
       href={WHATSAPP_URL}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={() => {
+        trackLead(trackingLabel);
+      }}
       className={`group relative inline-flex w-full items-center justify-center gap-2.5 rounded-2xl bg-primary px-5 py-3.5 text-center text-[13.5px] font-bold uppercase leading-tight tracking-[0.04em] text-primary-foreground shadow-[var(--shadow-gold)] transition-all duration-300 hover:scale-[1.02] hover:brightness-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:px-6 sm:py-4 sm:text-[15px] ${
         pulse ? "animate-[pulse-soft_2.4s_ease-in-out_infinite]" : ""
       } ${className}`}
