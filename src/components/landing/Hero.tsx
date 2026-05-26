@@ -1,5 +1,6 @@
 import { Crown } from "lucide-react";
 import { WhatsAppButton } from "./WhatsAppButton";
+import rainhaHero from "@/assets/rainha-hero.webp";
 
 export function Hero() {
   return (
