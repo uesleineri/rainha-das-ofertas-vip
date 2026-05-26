@@ -22,13 +22,13 @@ const PIXEL_SCRIPT =
   "fbq('init','1676389707030553');" +
   "fbq('track','PageView');";
 
-const UTMIFY_PIXEL_SCRIPT =
+/*const UTMIFY_PIXEL_SCRIPT =
   'window.pixelId = "6a15989dc6dde33a86bfe996";' +
   'var a = document.createElement("script");' +
   'a.setAttribute("async", "");' +
   'a.setAttribute("defer", "");' +
   'a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");' +
-  "document.head.appendChild(a);";
+  "document.head.appendChild(a);";*/
 
 function NotFoundComponent() {
   return (
@@ -129,14 +129,6 @@ function RootShell({ children }: { children: React.ReactNode }) {
       <head>
         <HeadContent />
         <script dangerouslySetInnerHTML={{ __html: PIXEL_SCRIPT }} />
-        <script dangerouslySetInnerHTML={{ __html: UTMIFY_PIXEL_SCRIPT }} />
-        <script
-          src="https://cdn.utmify.com.br/scripts/utms/latest.js"
-          data-utmify-prevent-xcod-sck=""
-          data-utmify-prevent-subids=""
-          async
-          defer
-        />
       </head>
       <body>
         {children}
