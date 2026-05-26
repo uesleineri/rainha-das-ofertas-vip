@@ -22,6 +22,14 @@ const PIXEL_SCRIPT =
   "fbq('init','1676389707030553');" +
   "fbq('track','PageView');";
 
+const UTMIFY_PIXEL_SCRIPT =
+  'window.pixelId = "6a15989dc6dde33a86bfe996";' +
+  'var a = document.createElement("script");' +
+  'a.setAttribute("async", "");' +
+  'a.setAttribute("defer", "");' +
+  'a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");' +
+  "document.head.appendChild(a);";
+
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -121,6 +129,14 @@ function RootShell({ children }: { children: React.ReactNode }) {
       <head>
         <HeadContent />
         <script dangerouslySetInnerHTML={{ __html: PIXEL_SCRIPT }} />
+        <script>
+        window.pixelId = "6a15989dc6dde33a86bfe996";
+        var a = document.createElement("script");
+        a.setAttribute("async", "");
+        a.setAttribute("defer", "");
+        a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+        document.head.appendChild(a);
+        </script>
         <script
           src="https://cdn.utmify.com.br/scripts/utms/latest.js"
           data-utmify-prevent-xcod-sck=""
