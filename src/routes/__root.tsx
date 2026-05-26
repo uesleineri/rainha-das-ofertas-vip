@@ -129,14 +129,7 @@ function RootShell({ children }: { children: React.ReactNode }) {
       <head>
         <HeadContent />
         <script dangerouslySetInnerHTML={{ __html: PIXEL_SCRIPT }} />
-        <script>
-        window.pixelId = "6a15989dc6dde33a86bfe996";
-        var a = document.createElement("script");
-        a.setAttribute("async", "");
-        a.setAttribute("defer", "");
-        a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
-        document.head.appendChild(a);
-        </script>
+        <script dangerouslySetInnerHTML={{ __html: UTMIFY_PIXEL_SCRIPT }} />
         <script
           src="https://cdn.utmify.com.br/scripts/utms/latest.js"
           data-utmify-prevent-xcod-sck=""
