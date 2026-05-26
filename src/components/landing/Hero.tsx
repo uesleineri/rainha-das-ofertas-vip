@@ -1,5 +1,6 @@
 import { Crown } from "lucide-react";
 import { WhatsAppButton } from "./WhatsAppButton";
+import rainhaHero from "@/assets/rainha-hero.webp";
 
 export function Hero() {
   return (
@@ -10,12 +11,20 @@ export function Hero() {
         <span>Grupo VIP 100% Gratuito</span>
       </div>
 
-      {/* Logo (visual, não-semântico) */}
-      <div className="mt-7 flex items-center justify-center gap-2.5 sm:mt-8" aria-label="Rainha das Ofertas">
-        <Crown className="h-6 w-6 text-primary sm:h-8 sm:w-8" strokeWidth={1.6} aria-hidden="true" />
-        <p className="font-display text-2xl font-semibold tracking-tight text-primary sm:text-3xl">
-          Rainha das Ofertas
-        </p>
+      {/* Imagem de marca */}
+      <div className="mt-7 sm:mt-8">
+        <div className="relative mx-auto aspect-square w-[220px] overflow-hidden rounded-2xl ring-1 ring-primary/30 shadow-[var(--shadow-gold)] sm:w-[280px]">
+          <img
+            src={rainhaHero}
+            alt="Rainha das Ofertas — grupo VIP de promoções no WhatsApp"
+            width={1080}
+            height={1080}
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
+            className="h-full w-full object-cover"
+          />
+        </div>
       </div>
 
       {/* Headline */}
